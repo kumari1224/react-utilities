@@ -4,7 +4,7 @@ import '../styles/style.css';
 class Modal extends Component{    
     render(){
         if(!this.props.show){
-            return false;
+            return null;
         }
         console.log(this.props)
         const coverClass = 'modal-cover modal-cover-active'
