@@ -8,6 +8,7 @@ export const setData=(data)=>({
     payload: data
 })
 
+
 //make api call and return data
 export function getData() {
     return (dispatch, getState) => {
