@@ -245,7 +245,7 @@ iframe {
 
 table {
   float:center;
-  width: 70%;
+  /*width: 70%;*/
 }
 
 th, td {
@@ -333,6 +333,7 @@ tbody tr:nth-child(odd){
 .hyperlink{
   color:#6c7ae0;
   text-decoration: underline;
+  cursor: pointer;
 }
 /*==================================================================
 [ Ver1 ]*/
