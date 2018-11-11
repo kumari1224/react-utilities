@@ -19,7 +19,7 @@ class Tabled extends Component{
   }
   componentDidUpdate() {
     $("ul li.active").removeClass('active');
-    $('ul li#'+this.state.currentPage).addClass('active');
+    $('ul li'+this.state.currentPage).addClass('active');
   }
   
   handleClick=(event)=>{
@@ -113,7 +113,7 @@ class Tabled extends Component{
 
   deleteRows = ()=>{
     let prompt = window.confirm("Confirm delete "+this.state.delete.length+" items?")
-    if(prompt==true){
+    if(prompt===true){
       this.props.deleteRows(this.state.delete)
     } else {
       console.log("cancelled");
@@ -146,7 +146,7 @@ class Tabled extends Component{
     const renderTodos = currentTodos.map((todo, index) => {
       return <tr key={index} className="row100-body">
                     <td key={todo.id} className="cell100 column1"><input type="checkbox" onChange={()=>this.handleCheck(todo.id)} /></td>
-                    <td className="cell100 column2" onClick={()=>this.callModal(todo)}> {todo.id} {todo.name}, {todo.email}....</td>
+                    <td className="cell100 column2 pointer" onClick={()=>this.callModal(todo)}> {todo.id} {todo.name}, {todo.email}....</td>
               </tr>;
     });
     // Logic for displaying page numbers
@@ -158,28 +158,29 @@ class Tabled extends Component{
     if(number === 1 && currentPage === 1){
       return(
         <li key={number} className='active' id={number}>
-          <a href='#' id={number} onClick={this.handleClick}>{number}</a>
+          <p className="hyperlink" id={number} onClick={this.handleClick}>{number}</p>
         </li>
       )
     }
     else if((number < upperPageBound + 1) && number > lowerPageBound){
       return(
         <li key={number} id={number}>
-          <a href='#' id={number} onClick={this.handleClick}>{number}</a>
+          <p className="hyperlink" id={number} onClick={this.handleClick}>{number}</p>
         </li>
     )
   }
+  return null;
 });
 
 let pageIncrementBtn = null;
 if(pageNumbers.length > upperPageBound){
   pageIncrementBtn = <li className=''>
-                        <a href='#' onClick={this.btnIncrementClick}> &hellip; </a>
+                        <p className="hyperlink" onClick={this.btnIncrementClick}> &hellip; </p>
                       </li>
 }
 let pageDecrementBtn = null;
 if(lowerPageBound >= 1){
-    pageDecrementBtn = <li className=''><a href='#' onClick={this.btnDecrementClick}> &hellip; </a></li>
+    pageDecrementBtn = <li className=''><p className="hyperlink" onClick={this.btnDecrementClick}> &hellip; </p></li>
 }
 let renderPrevBtn = null;
 if(isPrevBtnActive === 'disabled') {
@@ -187,7 +188,7 @@ if(isPrevBtnActive === 'disabled') {
 } 
 else{
   renderPrevBtn = <li className={isPrevBtnActive}>
-                      <a href='#' id="btnPrev" onClick={this.btnPrevClick}> Prev </a>
+                      <p className="hyperlink" id="btnPrev" onClick={this.btnPrevClick}> Prev </p>
                   </li>
 }
 let renderNextBtn = null;
@@ -195,7 +196,7 @@ if(isNextBtnActive === 'disabled') {
   renderNextBtn = <li className={isNextBtnActive}><span id="btnNext"> Next </span></li>
 }
 else{
-  renderNextBtn = <li className={isNextBtnActive}><a href='#' id="btnNext" onClick={this.btnNextClick}> Next </a></li>
+  renderNextBtn = <li className={isNextBtnActive}><p className="hyperlink" id="btnNext" onClick={this.btnNextClick}> Next </p></li>
 }
     const deletePointerHeader = this.state.isPoint ? "cell100 column1 pointer":"cell100 column1";
     return(
