@@ -1,0 +1,1 @@
+export const FETCH_USERS_API = "https://picsum.photos/v2/list";
